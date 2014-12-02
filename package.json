@@ -1,0 +1,33 @@
+{
+  "name": "hapi-rabbit",
+  "version": "0.0.1",
+  "description": "hapijs rabbitMQ plugin",
+  "main": "index.js",
+  "keywords": [
+    "hapi",
+    "rabbit.js",
+    "rabbitMQ",
+    "event",
+    "messageQueue",
+    "messageBus"
+  ],
+  "dependencies": {
+    "rabbit.js": "^0.4.2",
+    "hoek": "^2.10.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aduis/hapi-rabbit.git"
+  },
+  "author": "Andre Duis <andre.duis@gmail.com>",
+  "contributors": [
+    {
+      "name": "Markus Dethlefsen",
+      "email": "markus.dethlefsen@markus-inger.com"
+    }
+  ],
+  "scripts": {
+    "start": "node index.js"
+  },
+  "license": "ISC"
+}
