@@ -1,23 +1,42 @@
 # hapi-rabbit
-
-A simple hapijs plugin to connect to rabbitMQ 
+A simple hapijs plugin to connect to rabbitMQ
 
 ## Introduction
-TODO
+hapi-rabbit basically wraps rabbit.js and gives the user a simple api to publish and subscribe to rabbitMQ
 
 ## Prerequisites
-TODO
+* RabbitMQ
+* Node.js
 
 ## Installation
-TODO
+* npm install hapi-rabbit --save
+* add plugin to hapi server
+* include in your code
 
 ## Examples
+### load plugin
 ```javascript
-var context = plugin.plugins['hapi-rabbit'].context;   
-
-plugin.plugins['hapi-rabbit'].subscribe(context, 'notification', function(err, message){
-    console.log('received message: ', message);
+plugin.register([
+    {
+        plugin: require('hapi-rabbit')
+    }
+], function (err) {
+    if (err) {
+        throw err;
+    }
 });
-
-plugin.plugins['hapi-rabbit'].publish(context, 'notification', 'newNotification', 'hey i got a new notification');
+```
+### publish a message
+```javascript
+var rabbit = request.server.plugins['hapi-rabbit'];
+rabbit.createContext(function(err, context){
+    rabbit.publish(context, 'notification', 'newNotification', 'hey i got a new notification');
+});
+```
+### subscribe
+```javascript
+var rabbit = request.server.plugins['hapi-rabbit'];
+rabbit.createContext(function(err, context){
+    rabbit.publish(context, 'notification', 'newNotification', 'hey i got a new notification');
+});
 ```
