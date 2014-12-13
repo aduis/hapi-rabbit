@@ -38,7 +38,7 @@ function (request, reply) {
 
     var rabbit = request.server.plugins['hapi-rabbit'];
     rabbit.createContext(function(err, context){
-        rabbit.publish(context, 'notification', 'new.message', 'hey there');
+        rabbit.publish(context, 'exchange', 'messageType', 'message');
     });
     
     reply('Hello!');
@@ -52,7 +52,7 @@ exports.register = function (plugin, options, next) {
 
         var rabbit = plugin.plugins['hapi-rabbit'];
         rabbit.createContext(function(err, context){
-            rabbit.subscribe(context, 'notification', function(err, message){
+            rabbit.subscribe(context, 'exchange', function(err, message){
                 console.log('message', message);
             });
         });
