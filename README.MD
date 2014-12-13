@@ -7,9 +7,12 @@ hapi-rabbit basically wraps rabbit.js and gives the user a simple api to publish
 ## Prerequisites
 * RabbitMQ
 * Node.js
+* Hapi.js
 
 ## Installation
-* npm install hapi-rabbit --save
+```javascript
+npm install hapi-rabbit --save
+````
 * add plugin to hapi server
 * include in your code
 
@@ -18,7 +21,10 @@ hapi-rabbit basically wraps rabbit.js and gives the user a simple api to publish
 ```javascript
 plugin.register([
     {
-        plugin: require('hapi-rabbit')
+        plugin: require('hapi-rabbit'),
+        options: { 
+            url: 'amqp://localhost'
+        } 
     }
 ], function (err) {
     if (err) {
@@ -28,15 +34,31 @@ plugin.register([
 ```
 ### publish a message
 ```javascript
-var rabbit = request.server.plugins['hapi-rabbit'];
-rabbit.createContext(function(err, context){
-    rabbit.publish(context, 'notification', 'newNotification', 'hey i got a new notification');
-});
+function (request, reply) {
+
+    var rabbit = request.server.plugins['hapi-rabbit'];
+    rabbit.createContext(function(err, context){
+        rabbit.publish(context, 'notification', 'new.message', 'hey there');
+    });
+    
+    reply('Hello!');
+}
 ```
 ### subscribe
 ```javascript
-var rabbit = request.server.plugins['hapi-rabbit'];
-rabbit.createContext(function(err, context){
-    rabbit.publish(context, 'notification', 'newNotification', 'hey i got a new notification');
-});
+exports.register = function (plugin, options, next) {
+
+    plugin.events.once('start', function () {
+
+        var rabbit = plugin.plugins['hapi-rabbit'];
+        rabbit.createContext(function(err, context){
+            rabbit.subscribe(context, 'notification', function(err, message){
+                console.log('message', message);
+            });
+        });
+
+    });
+
+    next();
+};
 ```
