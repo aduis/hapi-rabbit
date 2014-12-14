@@ -12,8 +12,10 @@
     "messageBus"
   ],
   "dependencies": {
-    "rabbit.js": "^0.4.2",
-    "hoek": "^2.10.0"
+    "hapi": "^8.0.0",
+    "hoek": "^2.10.0",
+    "joi": "^5.0.2",
+    "rabbit.js": "^0.4.2"
   },
   "repository": {
     "type": "git",
@@ -29,5 +31,9 @@
   "scripts": {
     "start": "node index.js"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "assert": "^1.1.2",
+    "chai": "^1.10.0"
+  }
 }

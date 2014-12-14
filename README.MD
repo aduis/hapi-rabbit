@@ -12,7 +12,7 @@ hapi-rabbit basically wraps rabbit.js and gives the user a simple api to publish
 ## Installation
 ```javascript
 npm install hapi-rabbit --save
-````
+```
 * add plugin to hapi server
 * include in your code
 
