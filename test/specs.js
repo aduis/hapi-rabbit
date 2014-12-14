@@ -42,4 +42,36 @@ describe('hapiRabbit', function(){
 
   });
 
+  describe('subscribe', function(){
+  	var server = null;
+  	var rabbit = null;
+  	var error = null;
+
+  	beforeEach(function(done){
+  		var context = {};
+
+  		server = new Hapi.Server();
+  		server.register({
+		    register: hapiRabbit
+		}, function (err) {
+
+		    if (err) {
+		        console.log('Failed loading plugin');
+		    }
+
+			rabbit = server.plugins['hapi-rabbit'];
+            rabbit.subscribe(context, 'exchange.bla', function(err, message){
+            	error = err;
+                done();
+            });
+		});
+		
+	});
+    
+    it('should return validation error when entering non-alphanumeric exchange', function(){
+    	error.name.should.equal('ValidationError');
+    });
+
+  });
+
 });
