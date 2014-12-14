@@ -40,7 +40,9 @@ function (request, reply) {
 
     var rabbit = request.server.plugins['hapi-rabbit'];
     rabbit.createContext(function(err, context){
-        rabbit.publish(context, 'exchange', 'messageType', 'message');
+        rabbit.publish(context, 'exchange', 'messageType', 'message', function(err, messageObject){
+            console.log('messageObject', messageObject);
+        });
     });
     
     reply('Hello!');
