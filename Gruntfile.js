@@ -33,12 +33,24 @@ module.exports = function (grunt) {
                 options: {
                     mask: '*.js'
                 }
+            },
+            coveralls: {
+                src: ['test'],
+                options: {
+                    coverage:true,
+                    check: {
+                        lines: 75,
+                        statements: 75
+                    },
+                    root: './lib', // define where the cover task should consider the root of libraries that are covered by tests
+                    reportFormats: ['cobertura','lcovonly']
+                }
             }
         }
 
     });
 
-    grunt.registerTask('test', 'mochaTest');
+    grunt.registerTask('test', ['mochaTest', 'mocha_istanbul:coveralls']);
     grunt.registerTask('coverage', 'mocha_istanbul:coverage');
 
 };
