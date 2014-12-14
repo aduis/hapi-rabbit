@@ -34,6 +34,11 @@
   "license": "ISC",
   "devDependencies": {
     "assert": "^1.1.2",
-    "chai": "^1.10.0"
+    "chai": "^1.10.0",
+    "grunt": "~0.4.2",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-includes": "~0.4.0",
+    "grunt-mocha-test": "^0.12.4",
+    "mocha": "^2.0.1"
   }
 }
