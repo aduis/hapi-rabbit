@@ -1,6 +1,8 @@
 # hapi-rabbit
 A simple hapijs plugin to connect to rabbitMQ
 
+[![Build Status](https://travis-ci.org/aduis/hapi-rabbit.svg?branch=master)](https://travis-ci.org/aduis/hapi-rabbit)
+
 ## Introduction
 hapi-rabbit basically wraps rabbit.js and gives the user a simple api to publish and subscribe to rabbitMQ
 
