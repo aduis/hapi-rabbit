@@ -50,7 +50,7 @@ module.exports = function (grunt) {
 
     });
 
-    grunt.registerTask('test', ['mochaTest', 'mocha_istanbul:coveralls']);
+    grunt.registerTask('test', ['mocha_istanbul:coveralls']);
     grunt.registerTask('coverage', 'mocha_istanbul:coverage');
 
 };
