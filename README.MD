@@ -3,6 +3,8 @@ A simple hapijs plugin to connect to rabbitMQ
 
 [![Build Status](https://travis-ci.org/aduis/hapi-rabbit.svg?branch=master)](https://travis-ci.org/aduis/hapi-rabbit) [![Coverage Status](https://img.shields.io/coveralls/aduis/hapi-rabbit.svg)](https://coveralls.io/r/aduis/hapi-rabbit?branch=master) [![npm version](https://badge.fury.io/js/hapi-rabbit.svg)](http://badge.fury.io/js/hapi-rabbit) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
+[![NPM](https://nodei.co/npm/hapi-rabbit.png)](https://npmjs.org/package/hapi-rabbit)
+
 ## Introduction
 hapi-rabbit basically wraps rabbit.js and gives the user a simple api to publish and subscribe to rabbitMQ
 
