@@ -32,11 +32,11 @@ var context = {
         if (type === 'SUB') {
             connect = function (exchange, messageType, callback) {
                 callback();
-            }
+            };
         } else if (type === 'PUB') {
             connect = function (exchange, callback) {
                 callback();
-            }
+            };
         }
 
         return {
@@ -90,7 +90,7 @@ describe('hapiRabbit', function () {
         beforeEach(function (done) {
 
             setup(function (err, result) {
-                result.rabbit.subscribe(context, 'exchange.bla', function (err, message) {
+                result.rabbit.subscribe(context, 'exchange.bla', function (err) {
                     error = err;
                     done();
                 });
@@ -110,7 +110,7 @@ describe('hapiRabbit', function () {
         beforeEach(function (done) {
 
             setup(function (err, result) {
-                result.rabbit.publish(context, 'exchange.bla', 'messageType', 'message', function (err, message) {
+                result.rabbit.publish(context, 'exchange.bla', 'messageType', 'message', function (err) {
                     error = err;
                     done();
                 });
@@ -130,7 +130,7 @@ describe('hapiRabbit', function () {
         beforeEach(function (done) {
 
             setup(function (err, result) {
-                result.rabbit.publish(context, 'exchange', 'messageType.sdks', 'message', function (err, message) {
+                result.rabbit.publish(context, 'exchange', 'messageType.sdks', 'message', function (err) {
                     error = err;
                     done();
                 });

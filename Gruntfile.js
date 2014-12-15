@@ -2,6 +2,7 @@ module.exports = function (grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-mocha-istanbul');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
 
     grunt.initConfig({
 
@@ -34,6 +35,10 @@ module.exports = function (grunt) {
                     reportFormats: ['cobertura','lcovonly']
                 }
             }
+        },
+
+        jshint: {
+            all: ['Gruntfile.js', 'lib/**/*.js', 'test/**/*.js']
         }
 
     });
@@ -47,6 +52,6 @@ module.exports = function (grunt) {
         });
     });
 
-    grunt.registerTask('test', ['mocha_istanbul:coveralls']);
+    grunt.registerTask('test', [ 'jshint:all', 'mocha_istanbul:coveralls' ]);
 
 };
