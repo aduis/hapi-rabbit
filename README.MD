@@ -1,4 +1,6 @@
 # hapi-rabbit
+
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/aduis/hapi-rabbit?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 A simple hapijs plugin to connect to rabbitMQ
 
 [![Build Status](https://travis-ci.org/aduis/hapi-rabbit.svg?branch=master)](https://travis-ci.org/aduis/hapi-rabbit) [![Coverage Status](https://img.shields.io/coveralls/aduis/hapi-rabbit.svg)](https://coveralls.io/r/aduis/hapi-rabbit?branch=master) [![npm version](https://badge.fury.io/js/hapi-rabbit.svg)](http://badge.fury.io/js/hapi-rabbit) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
