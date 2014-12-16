@@ -42,6 +42,10 @@ function (request, reply) {
 
     var rabbit = request.server.plugins['hapi-rabbit'];
     rabbit.createContext(function(err, context){
+        if(err){
+            console.log('err', err);
+        }
+
         rabbit.publish(context, 'exchange', 'messageType', 'message', function(err, data){
             console.log('messageObject', data);
         });
@@ -58,6 +62,10 @@ exports.register = function (plugin, options, next) {
 
         var rabbit = plugin.plugins['hapi-rabbit'];
         rabbit.createContext(function(err, context){
+            if(err){
+                console.log('err', err);
+            }
+
             rabbit.subscribe(context, 'exchange', function(err, message){
                 console.log('message', message);
             });
@@ -68,3 +76,5 @@ exports.register = function (plugin, options, next) {
     next();
 };
 ```
+## Contribute
+If you want to contribute to hapi-rabbit, please send me a pull request.
