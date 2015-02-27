@@ -56,25 +56,50 @@ function (request, reply) {
 ```
 ### subscribe
 ```javascript
-exports.register = function (plugin, options, next) {
 
-    plugin.events.once('start', function () {
+var Hapi = require('hapi');
+var server = new Hapi.Server();
+var hapiRabbit = require('hapi-rabbit');
 
-        var rabbit = plugin.plugins['hapi-rabbit'];
-        rabbit.createContext(function(err, context){
-            if(err){
-                console.log('err', err);
-            }
+server.connection(
+    {
+        port: "9090"
+    }
+);
 
-            rabbit.subscribe(context, 'exchange', function(err, message){
-                console.log('message', message);
-            });
+var plugins = [{
+    {
+    register: hapiRabbit,
+    options: {
+        url: "amqp://localhost"
+    }
+}];
+
+server.register(plugins, function (err) {
+    if (err) {
+        console.log('error when registering modules', error);
+    }
+});
+
+server.start(function (err) {
+    if (err) {
+        console.log('error when starting server', error);
+    }
+
+    var rabbit = server.plugins['hapi-rabbit'];
+    rabbit.createContext(function(err, context){
+        if(err){
+            console.log('err', err);
+        }
+
+        rabbit.subscribe(context, 'exchange', function(err, message){
+            console.log('message', message);
         });
-
     });
 
-    next();
-};
+    console.log('service started');
+});
+
 ```
 ## Contribute
 If you want to contribute to hapi-rabbit, please send me a pull request.
