@@ -23,9 +23,9 @@ npm install hapi-rabbit --save
 ## Examples
 ### load plugin
 ```javascript
-plugin.register([
+server.register([
     {
-        plugin: require('hapi-rabbit'),
+        register: require('hapi-rabbit'),
         options: { 
             url: 'amqp://localhost'
         } 
