@@ -68,7 +68,6 @@ server.connection(
 );
 
 var plugins = [{
-    {
     register: hapiRabbit,
     options: {
         url: "amqp://localhost"
